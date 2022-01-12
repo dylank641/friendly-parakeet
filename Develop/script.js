@@ -1,8 +1,18 @@
 var choices;
 var numberConfirm;
+var userNum = 0;
 // randomizes lowerCase letters
+// var lowerCase;
+// function shuffleLower() {
+//   let lowerAlpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+//   lowerCase = lowerAlpha[Math.floor(Math.random()*lowerAlpha.length)];
+//   console.log(lowerCase);
+//   return lowerCase;
+// }
+// // shuffleLower();
+
 function shuffleArray(lowerCase) {
-  lowerCase.sort(() => Math.random() - 0.5);
+  lowerCase[Math.floor(Math.random()*lowerCase.length)];
 }
 let lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 shuffleArray(lowerCase);
@@ -43,7 +53,7 @@ var generateBtn = document.querySelector("#generate");
 
 // start ask for passwordLength
 function writePassword() {
-  passwordLength = window.prompt("Choose a Password Length between 8 and 128 characters.");
+  passwordLength = parseInt(window.prompt("Choose a Password Length between 8 and 128 characters."));
   if (passwordLength <= 128 && passwordLength >= 8) {
     alert ("Your password will be " + passwordLength + " characters long.");
   }
@@ -92,17 +102,42 @@ function writePassword() {
     console.log("Your password will NOT contain special characters.");
   }
   // four negative options
-  if (!numberConfirm && !upperCaseConfirm && !lowerCaseConfirm && !specialCharConfirm) {
-    alert("Please select correct criteria.");
-  }
-  // four positive options
-  else if (numberConfirm && upperCaseConfirm && lowerCaseConfirm && specialCharConfirm) {
-    choices = specialChar.concat(number,lowerCase,upperCase)
-  }
-  
-}
-  
+  // if (!numberConfirm && !upperCaseConfirm && !lowerCaseConfirm && !specialCharConfirm) {
+  //   alert("Please select correct criteria.");
+  // }
+  // // four positive options
+  // else if (numberConfirm && upperCaseConfirm && lowerCaseConfirm && specialCharConfirm) {
+  //   choices = specialChar.concat(number,lowerCase,upperCase)
+  //}
   var password = [];
+  for (let i = 0; i < passwordLength; i++) {
+    if (lowerCaseConfirm) {
+      password.push(lowerCase[[Math.floor(Math.random()*lowerCase.length)]]);
+      console.log(password);
+    }
+    if (upperCaseConfirm) {
+      password.push(upperCase[Math.floor(Math.random()*upperCase.length)]);
+      console.log (password);
+    }
+    if (specialCharConfirm) {
+      password.push(specialChar[Math.floor(Math.random()*specialChar.length)]);
+      console.log (password);
+    }
+    if (numberConfirm) {
+      password.push(number[Math.floor(Math.random()*number.length)]);
+      console.log (password);
+    }
+  }
+  
+  var finalPass = password.slice(0, passwordLength);
+  console.log(finalPass);
+  
+  // return password
+  document.getElementById("password").value = finalPass.join("");
+}
+
+  
+  // var password = [];
   // var password = generatePassword();
   // var passwordText = document.querySelector("#password");
   
