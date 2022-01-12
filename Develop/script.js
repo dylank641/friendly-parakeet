@@ -1,3 +1,5 @@
+var choices;
+var numberConfirm;
 // randomizes lowerCase letters
 function shuffleArray(lowerCase) {
   lowerCase.sort(() => Math.random() - 0.5);
@@ -52,57 +54,61 @@ function writePassword() {
   //end of ask for passwordLength
 
   //start of ask for upperCase
-  upperCaseConfirm = window.prompt("Would you like your password to contain uppercase letters? Type 'YES' or 'NO'.");
-  if (upperCaseConfirm == "YES" || upperCaseConfirm == "yes") {
-    alert ("Your password will contain uppercase letters.");
+  upperCaseConfirm = confirm("Would you like your password to contain uppercase letters? Type 'YES' or 'NO'.");
+  if (upperCaseConfirm) {
+    console.log("Your password will contain uppercase letters.");
   }
-  else if (upperCaseConfirm == "NO" || upperCaseConfirm == "no") {
-    alert("Your password will NOT contain uppercase letters.");
-  }
-  else {
-    
+  else { (upperCaseConfirm) 
+    console.log("Your password will NOT contain uppercase letters.");
   }
   //end of ask for upperCase
 
   //start of ask for lowerCase
-  lowerCaseConfirm = window.prompt("Would you like your password to contain lowercase letters? Type 'YES' or 'NO'.");
-  if (lowerCaseConfirm == "YES" || lowerCaseConfirm == "yes") {
-    alert("Your password will contain lowercase letters.");
+  lowerCaseConfirm = confirm("Would you like your password to contain lowercase letters? Type 'YES' or 'NO'.");
+  if (lowerCaseConfirm) {
+    console.log("Your password will contain lowercase letters.");
   }
   else {
-    alert("Your password will NOT contain lowercase letters.");
+    console.log("Your password will NOT contain lowercase letters.");
   }
   // end of ask for lowerCase
 
   //start of ask for number
-  numberConfirm = window.prompt("Would you like your password to contain numerical values? Type 'YES' or 'NO'.");
-  if (numberConfirm == "YES" || numberConfirm == "yes") {
-    alert("Your password will contain numerical values.");
+  numberConfirm = confirm("Would you like your password to contain numerical values? Type 'YES' or 'NO'.");
+  if (numberConfirm) {
+    console.log("Your password will contain numerical values.");
   }
   else {
-    alert("Your password will NOT contain numerical values.");
+    console.log("Your password will NOT contain numerical values.");
   }
   //end of ask for number
 
   //start of ask for specialChar
-  specialCharConfirm = window.prompt("Would you like your password to contain special characters? Type 'YES' or 'NO'.");
-  if (specialCharConfirm == "YES" || specialCharConfirm == "yes") {
-    alert("Your password will contain special characters.");
+  specialCharConfirm = confirm("Would you like your password to contain special characters? Type 'YES' or 'NO'.");
+  if (specialCharConfirm) {
+    console.log("Your password will contain special characters.");
   }
   else {
-    alert("Your password will NOT contain special characters.");
+    console.log("Your password will NOT contain special characters.");
+  }
+  // four negative options
+  if (!numberConfirm && !upperCaseConfirm && !lowerCaseConfirm && !specialCharConfirm) {
+    alert("Please select correct criteria.");
+  }
+  // four positive options
+  else if (numberConfirm && upperCaseConfirm && lowerCaseConfirm && specialCharConfirm) {
+    choices = specialChar.concat(number,lowerCase,upperCase)
   }
   
-
-  function generatePassword(){
-
-  };
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  
-  passwordText.value = password;
-
 }
+  
+  var password = [];
+  // var password = generatePassword();
+  // var passwordText = document.querySelector("#password");
+  
+  // passwordText.value = password;
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
