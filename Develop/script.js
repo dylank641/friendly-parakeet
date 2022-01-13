@@ -1,15 +1,6 @@
 var choices;
 var numberConfirm;
 var userNum = 0;
-// randomizes lowerCase letters
-// var lowerCase;
-// function shuffleLower() {
-//   let lowerAlpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-//   lowerCase = lowerAlpha[Math.floor(Math.random()*lowerAlpha.length)];
-//   console.log(lowerCase);
-//   return lowerCase;
-// }
-// // shuffleLower();
 
 function shuffleArray(lowerCase) {
   lowerCase[Math.floor(Math.random()*lowerCase.length)];
@@ -64,7 +55,7 @@ function writePassword() {
   //end of ask for passwordLength
 
   //start of ask for upperCase
-  upperCaseConfirm = confirm("Would you like your password to contain uppercase letters? Type 'YES' or 'NO'.");
+  upperCaseConfirm = confirm("Would you like your password to contain uppercase letters? Click 'Okay' if yes, or 'Cancel' for no");
   if (upperCaseConfirm) {
     console.log("Your password will contain uppercase letters.");
   }
@@ -74,7 +65,7 @@ function writePassword() {
   //end of ask for upperCase
 
   //start of ask for lowerCase
-  lowerCaseConfirm = confirm("Would you like your password to contain lowercase letters? Type 'YES' or 'NO'.");
+  lowerCaseConfirm = confirm("Would you like your password to contain lowercase letters? Click 'Okay' if yes, or 'Cancel' for no");
   if (lowerCaseConfirm) {
     console.log("Your password will contain lowercase letters.");
   }
@@ -84,7 +75,7 @@ function writePassword() {
   // end of ask for lowerCase
 
   //start of ask for number
-  numberConfirm = confirm("Would you like your password to contain numerical values? Type 'YES' or 'NO'.");
+  numberConfirm = confirm("Would you like your password to contain numerical values? Click 'Okay' if yes, or 'Cancel' for no");
   if (numberConfirm) {
     console.log("Your password will contain numerical values.");
   }
@@ -94,21 +85,16 @@ function writePassword() {
   //end of ask for number
 
   //start of ask for specialChar
-  specialCharConfirm = confirm("Would you like your password to contain special characters? Type 'YES' or 'NO'.");
+  specialCharConfirm = confirm("Would you like your password to contain special characters? Click 'Okay' if yes, or 'Cancel' for no");
   if (specialCharConfirm) {
     console.log("Your password will contain special characters.");
   }
   else {
     console.log("Your password will NOT contain special characters.");
   }
-  // four negative options
-  // if (!numberConfirm && !upperCaseConfirm && !lowerCaseConfirm && !specialCharConfirm) {
-  //   alert("Please select correct criteria.");
-  // }
-  // // four positive options
-  // else if (numberConfirm && upperCaseConfirm && lowerCaseConfirm && specialCharConfirm) {
-  //   choices = specialChar.concat(number,lowerCase,upperCase)
-  //}
+ //end of ask for specialChar
+
+ //if statements for options
   var password = [];
   for (let i = 0; i < passwordLength; i++) {
     if (lowerCaseConfirm) {
@@ -132,18 +118,9 @@ function writePassword() {
   var finalPass = password.slice(0, passwordLength);
   console.log(finalPass);
   
-  // return password
+
   document.getElementById("password").value = finalPass.join("");
 }
 
   
-  // var password = [];
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-  
-  // passwordText.value = password;
-
-
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
